@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>مكتبة الحمد</title>
+</head>
+
+<body>
+    <header class="nav" id="header">
+
+    <button class="cart-btn" id="cart-btn">
+
+    <span class="cart-count" id="cartCount">0</span>
+
+    عربة التسوق
+    <i class="fa-solid fa-cart-shopping"></i>
+
+</button>
+
+    <!-- Overlay -->
+<div class="overlay" id="overlay"></div>
+
+<!-- Cart Sidebar -->
+<div class="cart-sidebar" id="cartSidebar">
+
+    <div class="cart-header">
+        <button class="close-cart" id="closeCart">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <h2>🛒عربة التسوق</h2>
+    </div>
+
+    <div class="cart-items" id="cartItems"></div>
+
+<div class="cart-footer">
+
+    <h3>
+        <span id="cartTotal">0 ج.م</span>
+        :الإجمالي
+    </h3>
+
+    <button class="checkout-btn">
+        إتمام الطلب
+    </button>
+
+</div>
+
+</div>
+
+    <div class="logo">
+        <img src="./images/WhatsApp_Image_2026-07-11_at_5.26.46_PM-removebg-preview.png" alt="">
+    </div>
+
+</header>
+
+    <div class="hero-section">
+        <h1 class="hero-text">مكتبة الحمد</h1>
+        <p class="hero-p">.مستلزماتك الدراسيةّ، أقرب إليك</p>
+    </div>
+
+    <section class="products-section">
+
+        <!-- المنتجات -->
+        <div class="products-container">
+
+            <!-- الكروت هتتولد بالـ JavaScript -->
+            <div class="products-grid"></div>
+
+        </div>
+
+        <!-- الأقسام -->
+        <aside class="categories">
+
+            <h2>الأقسام</h2>
+
+            <button class="category-btn active">
+                كل المنتجات
+            </button>
+
+            <button class="category-btn">
+                الكشاكيل
+            </button>
+
+            <button class="category-btn">
+                الأقلام
+            </button>
+
+            <button class="category-btn">
+                الأدوات الفنية
+            </button>
+
+            <button class="category-btn">
+                الحقائب
+            </button>
+
+            <button class="category-btn">
+                الأدوات الهندسية
+            </button>
+
+        </aside>
+
+    </section>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
