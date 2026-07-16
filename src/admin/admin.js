@@ -1,14 +1,17 @@
-// =========================
-// Category Modal
-// =========================
+// ======================================================
+//                 CATEGORY MODAL
+// ======================================================
 
 const openModal = document.getElementById("openModal");
 const modal = document.getElementById("categoryModal");
 const overlay = document.getElementById("overlay");
+
 const closeModal = document.getElementById("closeModal");
 const cancelBtn = document.getElementById("cancelBtn");
 
 if (openModal && modal && overlay) {
+
+    // فتح نافذة إضافة قسم
 
     openModal.addEventListener("click", () => {
 
@@ -17,6 +20,8 @@ if (openModal && modal && overlay) {
 
     });
 
+    // غلق النافذة
+
     function closeCategoryModal() {
 
         modal.classList.remove("show");
@@ -24,8 +29,12 @@ if (openModal && modal && overlay) {
 
     }
 
+    // الأحداث الخاصة بالغلق
+
     closeModal?.addEventListener("click", closeCategoryModal);
+
     cancelBtn?.addEventListener("click", closeCategoryModal);
+
     overlay.addEventListener("click", closeCategoryModal);
 
     document.addEventListener("keydown", (e) => {
@@ -40,9 +49,11 @@ if (openModal && modal && overlay) {
 
 }
 
-// =========================
-// Search
-// =========================
+
+
+// ======================================================
+//                 SEARCH PRODUCTS
+// ======================================================
 
 const searchInput = document.getElementById("searchProduct");
 
@@ -52,76 +63,128 @@ if (searchInput) {
 
         const value = searchInput.value.toLowerCase();
 
+        // هنضيف فلترة المنتجات هنا بعدين
+
         console.log(value);
 
     });
 
 }
 
-// =========================
-// Navigation Tabs
-// =========================
+
+
+// ======================================================
+//                 NAVIGATION TABS
+// ======================================================
 
 const categoriesBtn = document.getElementById("categoriesBtn");
+
 const productsBtn = document.getElementById("productsBtn");
 
 const categoriesSection = document.getElementById("categoriesSection");
+
 const productsSection = document.getElementById("productsSection");
 
 if (
+
     categoriesBtn &&
     productsBtn &&
     categoriesSection &&
     productsSection
+
 ) {
 
+    // أول ما الصفحة تفتح
+
     productsSection.style.display = "none";
+
+    //==========================
+    // الأقسام
+    //==========================
 
     categoriesBtn.addEventListener("click", () => {
 
         categoriesSection.style.display = "block";
+
         productsSection.style.display = "none";
 
         categoriesBtn.classList.add("active");
+
         productsBtn.classList.remove("active");
 
     });
 
+    //==========================
+    // المنتجات
+    //==========================
+
     productsBtn.addEventListener("click", () => {
 
         categoriesSection.style.display = "none";
+
         productsSection.style.display = "block";
 
         productsBtn.classList.add("active");
+
         categoriesBtn.classList.remove("active");
 
     });
 
 }
 
+
+
+// ======================================================
+//                 FILTER POPUP
+// ======================================================
+
 const filterBtn = document.getElementById("filterBtn");
+
 const filterPopup = document.getElementById("filterPopup");
+
 const filterOverlay = document.getElementById("filterOverlay");
+
 const closeFilter = document.getElementById("closeFilter");
 
-filterBtn.addEventListener("click", () => {
+if (
 
-    filterPopup.classList.add("show");
-    filterOverlay.classList.add("show");
+    filterBtn &&
+    filterPopup &&
+    filterOverlay
 
-});
+) {
 
-function closeFilterPopup(){
+    // فتح الفلتر
 
-    filterPopup.classList.remove("show");
-    filterOverlay.classList.remove("show");
+    filterBtn.addEventListener("click", () => {
+
+        filterPopup.classList.add("show");
+
+        filterOverlay.classList.add("show");
+
+    });
+
+    // غلق الفلتر
+
+    function closeFilterPopup() {
+
+        filterPopup.classList.remove("show");
+
+        filterOverlay.classList.remove("show");
+
+    }
+
+    closeFilter?.addEventListener("click", closeFilterPopup);
+
+    filterOverlay.addEventListener("click", closeFilterPopup);
 
 }
 
-closeFilter.addEventListener("click", closeFilterPopup);
 
-filterOverlay.addEventListener("click", closeFilterPopup);
 
+// ======================================================
+//                 PRODUCT MODAL
+// ======================================================
 
 const addProductBtn = document.getElementById("addProductBtn");
 
@@ -133,24 +196,38 @@ const closeProductModal = document.getElementById("closeProductModal");
 
 const cancelProduct = document.querySelector(".cancel-product");
 
-addProductBtn.addEventListener("click",()=>{
+if (
 
-productModal.classList.add("show");
+    addProductBtn &&
+    productModal &&
+    productOverlay
 
-productOverlay.classList.add("show");
+) {
 
-});
+    // فتح نافذة إضافة المنتج
 
-function closeProduct(){
+    addProductBtn.addEventListener("click", () => {
 
-productModal.classList.remove("show");
+        productModal.classList.add("show");
 
-productOverlay.classList.remove("show");
+        productOverlay.classList.add("show");
+
+    });
+
+    // غلق النافذة
+
+    function closeProduct() {
+
+        productModal.classList.remove("show");
+
+        productOverlay.classList.remove("show");
+
+    }
+
+    closeProductModal?.addEventListener("click", closeProduct);
+
+    cancelProduct?.addEventListener("click", closeProduct);
+
+    productOverlay.addEventListener("click", closeProduct);
 
 }
-
-closeProductModal.addEventListener("click",closeProduct);
-
-cancelProduct.addEventListener("click",closeProduct);
-
-productOverlay.addEventListener("click",closeProduct);
