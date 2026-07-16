@@ -366,7 +366,7 @@ function showCheckoutForm() {
             <div class="order-summary">
                 <h3>ملخص الطلب</h3>
                 <div class="order-items">
-                    ${cart.map(item => `<p class="order-item">${item.name} x${item.quantity} — ${item.price * item.quantity} ج.م</p>`).join("")}
+                    ${cart.map(item => `<p class="order-item">${item.name} — ${item.price * item.quantity} ج.م — x${item.quantity}</p>`).join("")}
                 </div>
                 <p class="order-total">الإجمالي: <strong>${total} ج.م</strong></p>
             </div>
