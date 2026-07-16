@@ -76,8 +76,157 @@
     <!-- Content -->
 
     <main class="container">
+        <!-- Categories Section -->
 
+<section class="categories-section">
+
+    <div class="section-header">
+
+        <button class="add-btn" id="openModal">
+
+    <i class="fa-solid fa-plus"></i>
+
+    إضافة قسم
+
+</button>
+
+    </div>
+
+    <div class="categories-list">
+
+        <!-- Category Card -->
+
+        <div class="category-card">
+
+            <div class="category-info">
+
+                <div class="category-icon">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+
+                <div>
+
+                    <h3>الدفاتر</h3>
+
+                    <span>2 منتجات</span>
+
+                </div>
+
+            </div>
+
+            <div class="category-actions">
+
+                <button class="edit-btn">
+
+                    <i class="fa-regular fa-pen-to-square"></i>
+
+                    تعديل
+
+                </button>
+
+                <button class="delete-btn">
+
+                    <i class="fa-regular fa-trash-can"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Category Card -->
+
+        <div class="category-card">
+
+            <div class="category-info">
+
+                <div class="category-icon">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+
+                <div>
+
+                    <h3>الأقلام</h3>
+
+                    <span>3 منتجات</span>
+
+                </div>
+
+            </div>
+
+            <div class="category-actions">
+
+                <button class="edit-btn">
+
+                    <i class="fa-regular fa-pen-to-square"></i>
+
+                    تعديل
+
+                </button>
+
+                <button class="delete-btn">
+
+                    <i class="fa-regular fa-trash-can"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
     </main>
+
+    <!-- Overlay -->
+
+<div class="modal-overlay" id="overlay"></div>
+
+<!-- Add Category Modal -->
+
+<div class="modal" id="categoryModal">
+
+    <div class="modal-header">
+
+        <h2>إضافة قسم جديد</h2>
+
+        <button class="close-modal" id="closeModal">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+    </div>
+
+    <div class="modal-body">
+
+        <label>اسم القسم</label>
+
+        <input
+            type="text"
+            id="categoryName"
+            placeholder="مثال: الدفاتر">
+
+    </div>
+
+    <div class="modal-footer">
+
+        <button class="cancel-btn" id="cancelBtn">
+
+            إلغاء
+
+        </button>
+
+        <button class="save-btn" id="saveCategory">
+
+            حفظ القسم
+
+        </button>
+
+    </div>
+
+</div>
 
 </body>
 
