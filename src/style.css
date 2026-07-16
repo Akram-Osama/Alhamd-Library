@@ -889,6 +889,16 @@ img {
     direction: rtl;
 }
 
+.availability.available {
+    color: #2c7a1d;
+    font-weight: 700;
+}
+
+.availability.unavailable {
+    color: #d12f2f;
+    font-weight: 700;
+}
+
 .buy-btn {
     width: 90%;
     margin: 15px 5%;
@@ -898,6 +908,13 @@ img {
     background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
     color: white;
     cursor: pointer;
+}
+
+.buy-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    background-image: none;
+    background: #a8a8a8;
 }
 
 .products-grid {

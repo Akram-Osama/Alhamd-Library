@@ -39,6 +39,16 @@ async function loadProducts() {
     }
 }
 
+function isProductAvailable(product) {
+    const count = Number(product.availability);
+    if (!Number.isNaN(count)) {
+        return count > 0;
+    }
+
+    const text = String(product.availability || "").trim().toLowerCase();
+    return text !== "غير متوفر" && text !== "غير متاح" && text !== "unavailable" && text !== "0" && text !== "";
+}
+
 // =====================
 // Render Products
 // =====================
@@ -47,6 +57,9 @@ function renderProducts(productsToRender) {
     productsGrid.innerHTML = "";
 
     productsToRender.forEach((product) => {
+
+        const isAvailable = isProductAvailable(product);
+        const availabilityText = isAvailable ? "متوفر" : "غير متوفر";
 
         const card = document.createElement("div");
         card.classList.add("product-card");
@@ -60,11 +73,9 @@ function renderProducts(productsToRender) {
 
             <p class="price">${product.price} ج.م</p>
 
-            <p class="availability">
-                المتوفر: ${product.availability}
-            </p>
+            <p class="availability ${isAvailable ? "available" : "unavailable"}">${availabilityText}</p>
 
-            <button class="buy-btn">
+            <button class="buy-btn" ${isAvailable ? "" : "disabled"}>
                 <i class="fa-solid fa-cart-plus"></i>
                 إضافة إلى عربة التسوق
             </button>
@@ -72,11 +83,13 @@ function renderProducts(productsToRender) {
 
         const buyBtn = card.querySelector(".buy-btn");
 
-buyBtn.addEventListener("click", () => {
-    addToCart(product);
-});
+        if (isAvailable) {
+            buyBtn.addEventListener("click", () => {
+                addToCart(product);
+            });
+        }
 
-productsGrid.appendChild(card);
+        productsGrid.appendChild(card);
     });
 }
 
