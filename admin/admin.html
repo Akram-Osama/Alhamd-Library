@@ -9,8 +9,7 @@
 
     <link rel="stylesheet" href="../src/admin/admin.css">
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
 </head>
 
 <body>
@@ -55,7 +54,7 @@
 
     <section class="admin-nav">
 
-        <button class="nav-btn active">
+        <button id="categoriesBtn" class="tab-btn active">
 
             <i class="fa-solid fa-layer-group"></i>
 
@@ -63,9 +62,9 @@
 
         </button>
 
-        <button class="nav-btn">
+        <button id="productsBtn" class="tab-btn">
 
-            <i class="fa-solid fa-box"></i>
+            <i class="fa-solid fa-box-open"></i>
 
             المنتجات
 
@@ -76,158 +75,171 @@
     <!-- Content -->
 
     <main class="container">
+
         <!-- Categories Section -->
 
-<section class="categories-section">
+        <div id="categoriesSection" class="page-section">
 
-    <div class="section-header">
+            <section class="categories-section">
 
-        <button class="add-btn" id="openModal">
+                <div class="section-header">
 
-    <i class="fa-solid fa-plus"></i>
+                    <button class="add-btn" id="openModal">
 
-    إضافة قسم
+                        <i class="fa-solid fa-plus"></i>
 
-</button>
+                        إضافة قسم
 
-    </div>
-
-    <div class="categories-list">
-
-        <!-- Category Card -->
-
-        <div class="category-card">
-
-            <div class="category-info">
-
-                <div class="category-icon">
-                    <i class="fa-solid fa-layer-group"></i>
-                </div>
-
-                <div>
-
-                    <h3>الدفاتر</h3>
-
-                    <span>2 منتجات</span>
+                    </button>
 
                 </div>
 
-            </div>
+                <div class="categories-list">
 
-            <div class="category-actions">
+                    <!-- Category Card -->
 
-                <button class="edit-btn">
+                    <div class="category-card">
 
-                    <i class="fa-regular fa-pen-to-square"></i>
+                        <div class="category-info">
 
-                    تعديل
+                            <div class="category-icon">
+                                <i class="fa-solid fa-layer-group"></i>
+                            </div>
 
-                </button>
+                            <div>
 
-                <button class="delete-btn">
+                                <h3>الدفاتر</h3>
 
-                    <i class="fa-regular fa-trash-can"></i>
+                                <span>2 منتجات</span>
 
-                </button>
+                            </div>
 
-            </div>
+                        </div>
+
+                        <div class="category-actions">
+
+                            <button class="edit-btn">
+
+                                <i class="fa-regular fa-pen-to-square"></i>
+
+                                تعديل
+
+                            </button>
+
+                            <button class="delete-btn">
+
+                                <i class="fa-regular fa-trash-can"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Category Card -->
+
+                    <div class="category-card">
+
+                        <div class="category-info">
+
+                            <div class="category-icon">
+                                <i class="fa-solid fa-layer-group"></i>
+                            </div>
+
+                            <div>
+
+                                <h3>الأقلام</h3>
+
+                                <span>3 منتجات</span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="category-actions">
+
+                            <button class="edit-btn">
+
+                                <i class="fa-regular fa-pen-to-square"></i>
+
+                                تعديل
+
+                            </button>
+
+                            <button class="delete-btn">
+
+                                <i class="fa-regular fa-trash-can"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Overlay -->
+
+                <div class="modal-overlay" id="overlay"></div>
+
+                <!-- Add Category Modal -->
+
+                <div class="modal" id="categoryModal">
+
+                    <div class="modal-header">
+
+                        <h2>إضافة قسم جديد</h2>
+
+                        <button class="close-modal" id="closeModal">
+
+                            <i class="fa-solid fa-xmark"></i>
+
+                        </button>
+
+                    </div>
+
+                    <div class="modal-body">
+
+                        <label>اسم القسم</label>
+
+                        <input type="text" id="categoryName" placeholder="مثال: الدفاتر">
+
+                    </div>
+
+                    <div class="modal-footer">
+
+                        <button class="cancel-btn" id="cancelBtn">
+
+                            إلغاء
+
+                        </button>
+
+                        <button class="save-btn" id="saveCategory">
+
+                            حفظ القسم
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
 
         </div>
 
-        <!-- Category Card -->
+        <!-- products section -->
 
-        <div class="category-card">
+        <div id="productsSection" class="page-section">
 
-            <div class="category-info">
-
-                <div class="category-icon">
-                    <i class="fa-solid fa-layer-group"></i>
-                </div>
-
-                <div>
-
-                    <h3>الأقلام</h3>
-
-                    <span>3 منتجات</span>
-
-                </div>
-
-            </div>
-
-            <div class="category-actions">
-
-                <button class="edit-btn">
-
-                    <i class="fa-regular fa-pen-to-square"></i>
-
-                    تعديل
-
-                </button>
-
-                <button class="delete-btn">
-
-                    <i class="fa-regular fa-trash-can"></i>
-
-                </button>
-
-            </div>
+            <!-- كل كود المنتجات هنا -->
 
         </div>
 
-    </div>
-
-</section>
     </main>
 
-    <!-- Overlay -->
 
-<div class="modal-overlay" id="overlay"></div>
-
-<!-- Add Category Modal -->
-
-<div class="modal" id="categoryModal">
-
-    <div class="modal-header">
-
-        <h2>إضافة قسم جديد</h2>
-
-        <button class="close-modal" id="closeModal">
-
-            <i class="fa-solid fa-xmark"></i>
-
-        </button>
-
-    </div>
-
-    <div class="modal-body">
-
-        <label>اسم القسم</label>
-
-        <input
-            type="text"
-            id="categoryName"
-            placeholder="مثال: الدفاتر">
-
-    </div>
-
-    <div class="modal-footer">
-
-        <button class="cancel-btn" id="cancelBtn">
-
-            إلغاء
-
-        </button>
-
-        <button class="save-btn" id="saveCategory">
-
-            حفظ القسم
-
-        </button>
-
-    </div>
-
-</div>
-
+    <script src="../src/admin/admin.js"></script>
 </body>
 
 </html>
