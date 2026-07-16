@@ -232,12 +232,288 @@
 
         <div id="productsSection" class="page-section">
 
-            <!-- كل كود المنتجات هنا -->
+            <section class="products-section">
+
+    <div class="products-toolbar">
+
+        <div class="toolbar-right">
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="searchProduct"
+                    placeholder="ابحث عن منتج...">
+
+            </div>
+
+            <button
+                class="filter-btn"
+                id="filterBtn">
+
+                <i class="fa-solid fa-filter"></i>
+
+                فلترة
+
+            </button>
+
+            <button
+                class="add-product-btn"
+                id="addProductBtn">
+
+                <i class="fa-solid fa-plus"></i>
+
+                إضافة منتج
+
+            </button>
 
         </div>
 
-    </main>
+    </div>
 
+    <div class="products-table">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>الصورة</th>
+
+                    <th>المنتج</th>
+
+                    <th>القسم</th>
+
+                    <th>السعر</th>
+
+                    <th>الحالة</th>
+
+                    <th>الإجراءات</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="productsTableBody">
+
+                <tr>
+
+                    <td>
+                        <img src="https://placehold.co/70">
+                    </td>
+
+                    <td>دفتر سلك</td>
+
+                    <td>الكشاكيل</td>
+
+                    <td>45 ج.م</td>
+
+                    <td>
+
+                        <span class="status available">
+
+                            متوفر
+
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <button class="icon-btn edit">
+
+                            <i class="fa-solid fa-pen"></i>
+
+                        </button>
+
+                        <button class="icon-btn delete">
+
+                            <i class="fa-solid fa-trash"></i>
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+        </div>
+
+        <!-- Filter Overlay -->
+<div class="filter-overlay" id="filterOverlay"></div>
+
+<!-- Filter Popup -->
+<div class="filter-popup" id="filterPopup">
+
+    <div class="filter-header">
+
+        <h2>فلترة المنتجات</h2>
+
+        <button id="closeFilter">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+    </div>
+
+    <div class="filter-body">
+
+        <label>القسم</label>
+
+        <select id="filterCategory">
+
+            <option value="">كل الأقسام</option>
+
+            <option value="الكشاكيل">الكشاكيل</option>
+
+            <option value="الأقلام">الأقلام</option>
+
+            <option value="الأدوات الفنية">الأدوات الفنية</option>
+
+            <option value="الأدوات الهندسية">الأدوات الهندسية</option>
+
+            <option value="الحقائب">الحقائب</option>
+
+        </select>
+
+        <label>الحالة</label>
+
+        <select id="filterAvailability">
+
+            <option value="">الكل</option>
+
+            <option value="available">متوفر</option>
+
+            <option value="unavailable">غير متوفر</option>
+
+        </select>
+
+    </div>
+
+    <div class="filter-footer">
+
+        <button class="cancel-filter" id="resetFilter">
+            إعادة تعيين
+        </button>
+
+        <button class="apply-filter" id="applyFilter">
+            تطبيق
+        </button>
+
+    </div>
+
+</div>
+
+<!-- Product Overlay -->
+<div class="product-overlay" id="productOverlay"></div>
+
+<!-- Product Modal -->
+<div class="product-modal" id="productModal">
+
+    <div class="modal-header">
+
+        <h2>إضافة منتج جديد</h2>
+
+        <button id="closeProductModal">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+    </div>
+
+    <div class="modal-body">
+
+        <!-- الصورة -->
+
+        <label>صورة المنتج</label>
+
+        <div class="image-upload">
+
+            <input type="file" id="productImage" hidden>
+
+            <label for="productImage" class="upload-box">
+
+                <i class="fa-regular fa-image"></i>
+
+                <span>اختر صورة</span>
+
+            </label>
+
+        </div>
+
+        <!-- الاسم -->
+
+        <label>اسم المنتج</label>
+
+        <input
+        type="text"
+        id="productName"
+        placeholder="مثال : دفتر سلك">
+
+        <!-- القسم -->
+
+        <label>القسم</label>
+
+        <select id="productCategory">
+
+            <option>الكشاكيل</option>
+            <option>الأقلام</option>
+            <option>الأدوات الفنية</option>
+            <option>الأدوات الهندسية</option>
+            <option>الحقائب</option>
+
+        </select>
+
+        <!-- السعر -->
+
+        <label>السعر</label>
+
+        <input
+        type="number"
+        id="productPrice"
+        placeholder="0">
+
+        <!-- التوفر -->
+
+        <div class="availability">
+
+            <span>متوفر</span>
+
+            <label class="switch">
+
+                <input type="checkbox" checked>
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+    </div>
+
+    <div class="modal-footer">
+
+        <button class="cancel-product">
+            إلغاء
+        </button>
+
+        <button class="save-product">
+            حفظ المنتج
+        </button>
+
+    </div>
+
+</div>
+
+    </main>
 
     <script src="../src/admin/admin.js"></script>
 </body>

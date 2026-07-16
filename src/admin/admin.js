@@ -59,70 +59,6 @@ if (searchInput) {
 }
 
 // =========================
-// Filter Popup
-// =========================
-
-const filterBtn = document.getElementById("filterBtn");
-const filterPopup = document.getElementById("filterPopup");
-const filterOverlay = document.getElementById("filterOverlay");
-const closeFilter = document.getElementById("closeFilter");
-
-if (filterBtn && filterPopup && filterOverlay) {
-
-    filterBtn.addEventListener("click", () => {
-
-        filterPopup.classList.add("show");
-        filterOverlay.classList.add("show");
-
-    });
-
-    function closeFilterPopup() {
-
-        filterPopup.classList.remove("show");
-        filterOverlay.classList.remove("show");
-
-    }
-
-    closeFilter?.addEventListener("click", closeFilterPopup);
-
-    filterOverlay.addEventListener("click", closeFilterPopup);
-
-}
-
-// =========================
-// Product Modal
-// =========================
-
-const addProductBtn = document.getElementById("addProductBtn");
-const productModal = document.getElementById("productModal");
-const productOverlay = document.getElementById("productOverlay");
-const closeProductModal = document.getElementById("closeProductModal");
-const cancelProduct = document.querySelector(".cancel-product");
-
-if (addProductBtn && productModal && productOverlay) {
-
-    addProductBtn.addEventListener("click", () => {
-
-        productModal.classList.add("show");
-        productOverlay.classList.add("show");
-
-    });
-
-    function closeProduct() {
-
-        productModal.classList.remove("show");
-        productOverlay.classList.remove("show");
-
-    }
-
-    closeProductModal?.addEventListener("click", closeProduct);
-    cancelProduct?.addEventListener("click", closeProduct);
-
-    productOverlay.addEventListener("click", closeProduct);
-
-}
-
-// =========================
 // Navigation Tabs
 // =========================
 
@@ -162,3 +98,59 @@ if (
     });
 
 }
+
+const filterBtn = document.getElementById("filterBtn");
+const filterPopup = document.getElementById("filterPopup");
+const filterOverlay = document.getElementById("filterOverlay");
+const closeFilter = document.getElementById("closeFilter");
+
+filterBtn.addEventListener("click", () => {
+
+    filterPopup.classList.add("show");
+    filterOverlay.classList.add("show");
+
+});
+
+function closeFilterPopup(){
+
+    filterPopup.classList.remove("show");
+    filterOverlay.classList.remove("show");
+
+}
+
+closeFilter.addEventListener("click", closeFilterPopup);
+
+filterOverlay.addEventListener("click", closeFilterPopup);
+
+
+const addProductBtn = document.getElementById("addProductBtn");
+
+const productModal = document.getElementById("productModal");
+
+const productOverlay = document.getElementById("productOverlay");
+
+const closeProductModal = document.getElementById("closeProductModal");
+
+const cancelProduct = document.querySelector(".cancel-product");
+
+addProductBtn.addEventListener("click",()=>{
+
+productModal.classList.add("show");
+
+productOverlay.classList.add("show");
+
+});
+
+function closeProduct(){
+
+productModal.classList.remove("show");
+
+productOverlay.classList.remove("show");
+
+}
+
+closeProductModal.addEventListener("click",closeProduct);
+
+cancelProduct.addEventListener("click",closeProduct);
+
+productOverlay.addEventListener("click",closeProduct);
