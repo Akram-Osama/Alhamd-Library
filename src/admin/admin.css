@@ -1308,9 +1308,21 @@ font-size:16px;
 
 }
 
+.image-upload{
+
+display:flex;
+
+justify-content:center;
+
+}
+
 .upload-box{
 
-height:170px;
+height:180px;
+
+width:100%;
+
+max-width:280px;
 
 border:2px dashed #ccc;
 
@@ -1330,12 +1342,44 @@ cursor:pointer;
 
 color:#777;
 
+padding:16px;
+
+background:#fafafa;
+
+transition:.3s;
+
+}
+
+.upload-box.has-preview{
+
+border-color:#4f8cff;
+
+background:#f3f8ff;
+
 }
 
 .upload-box i{
 
 font-size:50px;
 
+}
+
+.image-preview{
+	display:none;
+	width:100%;
+	max-width:220px;
+	max-height:140px;
+	object-fit:cover;
+	border-radius:12px;
+}
+
+.image-preview.show{
+	display:block;
+}
+
+.upload-box.has-preview #imageIcon,
+.upload-box.has-preview #imageLabel{
+	display:none;
 }
 
 .availability{

@@ -278,18 +278,118 @@ const productOverlay = document.getElementById("productOverlay");
 const closeProductModal = document.getElementById("closeProductModal");
 
 const cancelProduct = document.querySelector(".cancel-product");
+const saveProductBtn = document.getElementById("saveProductBtn");
+const productsTableBody = document.getElementById("productsTableBody");
+const productNameInput = document.getElementById("productName");
+const productCategorySelect = document.getElementById("productCategory");
+const productPriceInput = document.getElementById("productPrice");
+const productAvailabilityToggle = document.getElementById("productAvailability");
+const productImageInput = document.getElementById("productImage");
+const uploadBox = document.getElementById("uploadBox");
+const imagePreview = document.getElementById("imagePreview");
+const imageIcon = document.getElementById("imageIcon");
+const imageLabel = document.getElementById("imageLabel");
+const productModalTitle = document.querySelector("#productModal .modal-header h2");
 
-if (
+let editingProductRow = null;
+let selectedProductImage = "";
 
-    addProductBtn &&
-    productModal &&
-    productOverlay
+function setProductPreview(imageSrc) {
+    if (!imagePreview || !uploadBox) return;
 
-) {
+    if (imageSrc) {
+        imagePreview.src = imageSrc;
+        imagePreview.classList.add("show");
+        uploadBox.classList.add("has-preview");
+    } else {
+        imagePreview.removeAttribute("src");
+        imagePreview.classList.remove("show");
+        uploadBox.classList.remove("has-preview");
+    }
+}
+
+function resetProductForm() {
+    if (productNameInput) productNameInput.value = "";
+    if (productCategorySelect) productCategorySelect.selectedIndex = 0;
+    if (productPriceInput) productPriceInput.value = "";
+    if (productAvailabilityToggle) productAvailabilityToggle.checked = true;
+    selectedProductImage = "";
+    setProductPreview("");
+}
+
+function openProductModalForEdit(row) {
+    editingProductRow = row;
+    const name = row.querySelector(".product-name-cell")?.textContent.trim() || "";
+    const category = row.querySelector(".product-category-cell")?.textContent.trim() || "";
+    const price = row.querySelector(".product-price-cell")?.textContent.replace(/ج\.م/g, "").trim() || "";
+    const status = row.querySelector(".product-status-cell .status")?.textContent.trim() || "";
+    const imageSrc = row.querySelector(".product-image")?.getAttribute("src") || "";
+
+    if (productNameInput) productNameInput.value = name;
+    if (productCategorySelect) productCategorySelect.value = category;
+    if (productPriceInput) productPriceInput.value = price;
+    if (productAvailabilityToggle) productAvailabilityToggle.checked = status === "متوفر";
+
+    selectedProductImage = imageSrc;
+    setProductPreview(imageSrc);
+
+    if (productModalTitle) productModalTitle.textContent = "تعديل المنتج";
+    if (saveProductBtn) saveProductBtn.textContent = "حفظ التعديل";
+
+    productModal.classList.add("show");
+    productOverlay.classList.add("show");
+}
+
+function createProductRow(product) {
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+        <td>
+            <img class="product-image" src="${product.image}" alt="${product.name}">
+        </td>
+        <td class="product-name-cell">${product.name}</td>
+        <td class="product-category-cell">${product.category}</td>
+        <td class="product-price-cell">${product.price} ج.م</td>
+        <td class="product-status-cell">
+            <span class="status ${product.available ? "available" : "unavailable"}">
+                ${product.available ? "متوفر" : "غير متوفر"}
+            </span>
+        </td>
+        <td>
+            <button class="icon-btn edit">
+                <i class="fa-solid fa-pen"></i>
+            </button>
+            <button class="icon-btn delete">
+                <i class="fa-solid fa-trash"></i>
+            </button>
+        </td>
+    `;
+
+    return row;
+}
+
+function renderInitialProduct() {
+    if (!productsTableBody) return;
+
+    productsTableBody.innerHTML = "";
+    productsTableBody.appendChild(createProductRow({
+        image: "https://placehold.co/70",
+        name: "دفتر سلك",
+        category: "الكشاكيل",
+        price: "45",
+        available: true
+    }));
+}
+
+if (addProductBtn && productModal && productOverlay) {
 
     // فتح نافذة إضافة المنتج
 
     addProductBtn.addEventListener("click", () => {
+        editingProductRow = null;
+        resetProductForm();
+        if (productModalTitle) productModalTitle.textContent = "إضافة منتج جديد";
+        if (saveProductBtn) saveProductBtn.textContent = "حفظ المنتج";
 
         productModal.classList.add("show");
 
@@ -304,6 +404,10 @@ if (
         productModal.classList.remove("show");
 
         productOverlay.classList.remove("show");
+        editingProductRow = null;
+        resetProductForm();
+        if (productModalTitle) productModalTitle.textContent = "إضافة منتج جديد";
+        if (saveProductBtn) saveProductBtn.textContent = "حفظ المنتج";
 
     }
 
@@ -313,4 +417,86 @@ if (
 
     productOverlay.addEventListener("click", closeProduct);
 
+}
+
+if (productImageInput && uploadBox) {
+    productImageInput.addEventListener("change", (e) => {
+        const file = e.target.files?.[0];
+
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = () => {
+            selectedProductImage = reader.result;
+            setProductPreview(selectedProductImage);
+        };
+        reader.readAsDataURL(file);
+    });
+}
+
+if (saveProductBtn) {
+    saveProductBtn.addEventListener("click", () => {
+        const name = productNameInput?.value.trim();
+        const category = productCategorySelect?.value || "";
+        const price = productPriceInput?.value.trim();
+        const available = productAvailabilityToggle?.checked ?? true;
+
+        if (!name || !price || !category) {
+            return;
+        }
+
+        const productData = {
+            image: selectedProductImage || "https://placehold.co/70",
+            name,
+            category,
+            price,
+            available
+        };
+
+        if (editingProductRow) {
+            editingProductRow.innerHTML = `
+                <td>
+                    <img class="product-image" src="${productData.image}" alt="${productData.name}">
+                </td>
+                <td class="product-name-cell">${productData.name}</td>
+                <td class="product-category-cell">${productData.category}</td>
+                <td class="product-price-cell">${productData.price} ج.م</td>
+                <td class="product-status-cell">
+                    <span class="status ${productData.available ? "available" : "unavailable"}">
+                        ${productData.available ? "متوفر" : "غير متوفر"}
+                    </span>
+                </td>
+                <td>
+                    <button class="icon-btn edit">
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+                    <button class="icon-btn delete">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </td>
+            `;
+        } else if (productsTableBody) {
+            productsTableBody.appendChild(createProductRow(productData));
+        }
+
+        closeProduct();
+    });
+}
+
+if (productsTableBody) {
+    productsTableBody.addEventListener("click", (e) => {
+        const editButton = e.target.closest(".icon-btn.edit");
+        const deleteButton = e.target.closest(".icon-btn.delete");
+        const row = e.target.closest("tr");
+
+        if (editButton && row) {
+            openProductModalForEdit(row);
+        }
+
+        if (deleteButton && row) {
+            row.remove();
+        }
+    });
+
+    renderInitialProduct();
 }
