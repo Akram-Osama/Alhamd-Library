@@ -1308,21 +1308,9 @@ font-size:16px;
 
 }
 
-.image-upload{
-
-display:flex;
-
-justify-content:center;
-
-}
-
 .upload-box{
 
-height:180px;
-
-width:100%;
-
-max-width:280px;
+height:170px;
 
 border:2px dashed #ccc;
 
@@ -1341,20 +1329,6 @@ gap:10px;
 cursor:pointer;
 
 color:#777;
-
-padding:16px;
-
-background:#fafafa;
-
-transition:.3s;
-
-}
-
-.upload-box.has-preview{
-
-border-color:#4f8cff;
-
-background:#f3f8ff;
 
 }
 
