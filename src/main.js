@@ -19,6 +19,20 @@ const checkoutBtn = document.querySelector(".checkout-btn");
 const cartFooter = document.querySelector(".cart-footer");
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let addButtonFeedbackTimer;
+
+function showAddButtonFeedback(button) {
+    const originalText = button.dataset.originalText || "إضافة إلى عربة التسوق";
+    button.dataset.originalText = originalText;
+    button.classList.add("added-success");
+    button.innerHTML = '<i class="fa-solid fa-check"></i> تمت الإضافة';
+
+    clearTimeout(addButtonFeedbackTimer);
+    addButtonFeedbackTimer = setTimeout(() => {
+        button.classList.remove("added-success");
+        button.innerHTML = `<i class="fa-solid fa-cart-plus"></i> ${originalText}`;
+    }, 1000);
+}
 
 // =====================
 // Load Products
@@ -86,6 +100,7 @@ function renderProducts(productsToRender) {
         if (isAvailable) {
             buyBtn.addEventListener("click", () => {
                 addToCart(product);
+                showAddButtonFeedback(buyBtn);
             });
         }
 
